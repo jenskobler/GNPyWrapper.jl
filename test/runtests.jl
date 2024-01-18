@@ -6,4 +6,5 @@ using Test
 
     @test GNPyWrapper.dummyfunction() == "A dummy function"
     @test dummymult10(10) == 100
+    @test dummymult10(20) == 200
 end
