@@ -1,0 +1,3 @@
+[deps]
+GNPyWrapper = "48913e77-5b30-423e-9320-fa1fe4687f5e"
+Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
