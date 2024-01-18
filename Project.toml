@@ -1,0 +1,13 @@
+name = "GNPyWrapper"
+uuid = "48913e77-5b30-423e-9320-fa1fe4687f5e"
+authors = ["fchrstou <filippos.christou@ikr.uni-stuttgart.de> and contributors"]
+version = "1.0.0-DEV"
+
+[compat]
+julia = "1"
+
+[extras]
+Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
+
+[targets]
+test = ["Test"]
