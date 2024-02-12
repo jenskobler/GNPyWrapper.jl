@@ -1,8 +1,11 @@
 module GNPyWrapper
 
-export dummymult10
+using DocStringExtensions
+
+export DummyStruct
+export dummymult10, dummyfunction
 
 # Write your package code here.
-include("myfuncs.jl")
+include("examplefile.jl")
 
 end
