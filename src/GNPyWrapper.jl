@@ -52,6 +52,17 @@ export edfa_obj
 
 export edfa_example_des
 
+export create_full_path_des_from_cli_examples_02
+
+export roadm_obj
+
+export fused_obj
+
+export create_full_real_path
+
+
+
+
 # export fiber_des,fiber_obj
 # export transceiver_des, transceiver_obj
 # export fused_des, fused_obj
@@ -76,6 +87,9 @@ include("a_initialize_phase/create_description.jl")
 include("a_initialize_phase/create_object.jl")
 include("z_python_auxiliary_functions/analye_py_obj.jl")
 include("examples/gnpy_object_descriptions.jl")
+
+include("a_initialize_phase/create_full_path_description.jl")
+include("a_initialize_phase/create_path.jl")
 
 end
 

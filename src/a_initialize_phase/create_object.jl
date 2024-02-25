@@ -490,39 +490,48 @@ $(TYPEDSIGNATURES)
 
 creates Edfa description in julia dictionary format
 """
-function roadm_obj(original_roadm_object)
+function roadm_obj(complete_roadm_description_dict,list_of_attr, attr_list_roadm_params, py_modules)
+
+    element_roadm  = py_modules["elements"].Roadm(
+        
+    
+        uid = "dummy uid",
+        params = Dict(
+            "add_drop_osnr" => 38,
+            "pmd" => 0,
+            "pdl" => 0,
+            "restrictions" => nothing
+        )
+    
+    
+    
+    )
+
+    for i in list_of_attr
+        if DEBUG_01
+            println(i)                
+        end
+
+        if i == "params"
+            #println("IN PARAMS")
+            py_modules["builtins"].setattr(
+                element_roadm, 
+                i,
+                roadm_params_obj(
+                    complete_roadm_description_dict[i],
+                    attr_list_roadm_params,
+                    py_modules
+                    ))
+
+        else
+            py_modules["builtins"].setattr(element_roadm, i,complete_roadm_description_dict[i])
+        end
+        
+    end
 
 
-    roadm_dict = Dict()
-
-    roadm_dict["lat"] = original_roadm_object.lat
-    roadm_dict["latitude"] = original_roadm_object.latitude
-    roadm_dict["lng"] = original_roadm_object.lng
-    roadm_dict["loc"] = original_roadm_object.loc #TODO # attention! # here must be a dictionary not an object
-    roadm_dict["location"] = original_roadm_object.location #TODO # attention! # here must be a dictionary not an object
-    roadm_dict["loss"] = original_roadm_object.loss
-    roadm_dict["metadata"] = original_roadm_object.metadata
-    roadm_dict["name"] = original_roadm_object.name
-    roadm_dict["operational"] = original_roadm_object.operational
-    roadm_dict["params"] = roadm_params_des(original_roadm_object.params) #TODO # attention! # here must be a dictionary not an object
-    roadm_dict["passive"] = original_roadm_object.passive
-    roadm_dict["per_degree_pch_out_dbm"] = original_roadm_object.per_degree_pch_out_dbm
-    roadm_dict["per_degree_pch_psd"] = original_roadm_object.per_degree_pch_psd
-    roadm_dict["per_degree_pch_psw"] = original_roadm_object.per_degree_pch_psw
-    roadm_dict["propagated_labels"] = original_roadm_object.propagated_labels
-    #roadm_dict["ref_carrier"] = roadm_ref_carrier_des(original_roadm_object.ref_carrier) #TODO # attention! # here must be a dictionary not an object
-    roadm_dict["ref_effective_loss"] = original_roadm_object.ref_effective_loss
-    #roadm_dict["ref_pch_in_dbm"] = original_roadm_object.ref_pch_in_dbm
-    roadm_dict["ref_pch_out_dbm"] = original_roadm_object.ref_pch_out_dbm
-    roadm_dict["restrictions"] = original_roadm_object.restrictions
-    roadm_dict["target_out_mWperSlotWidth"] = original_roadm_object.target_out_mWperSlotWidth
-    roadm_dict["target_pch_out_dbm"] = original_roadm_object.target_pch_out_dbm
-    roadm_dict["target_psd_out_mWperGHz"] = original_roadm_object.target_psd_out_mWperGHz
-    roadm_dict["type_variety"] = original_roadm_object.type_variety
-    roadm_dict["uid"] = original_roadm_object.uid
-
-    return roadm_dict
-
+    return element_roadm
+    
 end
 
 """
@@ -530,23 +539,76 @@ $(TYPEDSIGNATURES)
 
 creates Edfa description in julia dictionary format
 """
-function roadm_params_obj(original_roadm_params_object)
+function roadm_params_obj(complete_roadm_params_description_dict, list_of_attr,py_modules)
 
-    roadm_params_dict = Dict()
+    element_roadm_params =  py_modules["parameters"].RoadmParams(
+        add_drop_osnr = 38,
+        pmd = 0,
+        pdl = 0,
+        restrictions = nothing
+    )
 
-    roadm_params_dict["add_drop_osnr"] = original_roadm_params_object.add_drop_osnr
-    roadm_params_dict["pdl"] = original_roadm_params_object.pdl
-    roadm_params_dict["per_degree_pch_out_db"] = original_roadm_params_object.per_degree_pch_out_db
-    roadm_params_dict["per_degree_pch_psd"] = original_roadm_params_object.per_degree_pch_psd
-    roadm_params_dict["per_degree_pch_psw"] = original_roadm_params_object.per_degree_pch_psw
-    roadm_params_dict["pmd"] = original_roadm_params_object.pmd
-    roadm_params_dict["restrictions"] = original_roadm_params_object.restrictions
-    roadm_params_dict["target_out_mWperSlotWidth"] = original_roadm_params_object.target_out_mWperSlotWidth
-    roadm_params_dict["target_pch_out_db"] = original_roadm_params_object.target_pch_out_db
-    roadm_params_dict["target_psd_out_mWperGHz"] = original_roadm_params_object.target_psd_out_mWperGHz
+    for i in list_of_attr
+        #println(i)
+        py_modules["builtins"].setattr(element_roadm_params, i ,complete_roadm_params_description_dict[i])
+    end
+
+    return element_roadm_params
+end
+
+# """
+# $(TYPEDSIGNATURES)
+
+# creates Edfa description in julia dictionary format
+# """
+# function roadm_ref_carrier_obj(original_roadm_ref_carrier_object)
+
+#     roadm_ref_carrier_dict = Dict()
+
+#     roadm_ref_carrier_dict["baud_rate"] = original_roadm_ref_carrier_object.baud_rate
+#     roadm_ref_carrier_dict["slot_width"] = original_roadm_ref_carrier_object.slot_width
 
 
-    return roadm_params_dict
+#     return roadm_ref_carrier_dict
+# end
+
+"""
+$(TYPEDSIGNATURES)
+
+creates Edfa description in julia dictionary format
+"""
+function fused_obj(complete_fused_description_dict,list_of_attr,attr_list_fused_params , py_modules)
+
+ 
+    element_fused = py_modules["elements"].Fused(
+        uid = "dummy fused uid"
+    )
+
+    for i in list_of_attr
+        if DEBUG_01
+            println(i)                
+        end
+
+        if i == "params"
+            #println("IN PARAMS")
+            py_modules["builtins"].setattr(
+                element_fused, 
+                i,
+                roadm_params_obj(
+                    complete_fused_description_dict[i],
+                    attr_list_fused_params,
+                    py_modules
+                    ))
+
+        else
+            py_modules["builtins"].setattr(element_fused, i,complete_fused_description_dict[i])
+        end
+        
+    end
+
+
+
+    return element_fused 
 end
 
 """
@@ -554,15 +616,16 @@ $(TYPEDSIGNATURES)
 
 creates Edfa description in julia dictionary format
 """
-function roadm_ref_carrier_obj(original_roadm_ref_carrier_object)
+function fused_params_obj(complete_fused_params_description_dict, list_of_attr, py_modules)
 
-    roadm_ref_carrier_dict = Dict()
+    element_fused_params =  py_modules["parameters"].FusedParams()
 
-    roadm_ref_carrier_dict["baud_rate"] = original_roadm_ref_carrier_object.baud_rate
-    roadm_ref_carrier_dict["slot_width"] = original_roadm_ref_carrier_object.slot_width
+    for i in list_of_attr
+        #println(i)
+        py_modules["builtins"].setattr(element_fused_params, i ,complete_fused_params_description_dict[i])
+    end
 
-
-    return roadm_ref_carrier_dict
+    return element_fused_params
 end
 
 """
@@ -570,45 +633,6 @@ $(TYPEDSIGNATURES)
 
 creates Edfa description in julia dictionary format
 """
-function fused_obj(original_fused_object)
-
-    fused_dict = Dict()
-
-    fused_dict["lat"] = original_fused_object.lat
-    fused_dict["latitude"] = original_fused_object.latitude
-    fused_dict["lng"] = original_fused_object.lng
-    fused_dict["loc"] = original_fused_object.loc
-    fused_dict["location"] = original_fused_object.location
-    fused_dict["longitude"] = original_fused_object.longitude
-    fused_dict["loss"] = original_fused_object.loss
-    fused_dict["metadata"] = original_fused_object.metadata
-    fused_dict["name"] = original_fused_object.name
-    fused_dict["operational"] = original_fused_object.operational
-    fused_dict["params"] = fused_params_des(original_fused_object.params) #TODO # attention! # here must be a dictionary not an object
-    fused_dict["passive"] = original_fused_object.passive
-    fused_dict["uid"] = original_fused_object.uid
-
-
-
-
-    return fused_dict
-end
-
-"""
-$(TYPEDSIGNATURES)
-
-creates Edfa description in julia dictionary format
-"""
-function fused_params_obj(original_fused_params_object)
-
-    fused_params_dict = Dict()
-
-    fused_params_dict["loss"] = original_fused_params_object.loss
-
-
-    return fused_params_dict
-end
-
 function spectral_information_obj(si_dictionary, py_modules)
 
     
