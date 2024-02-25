@@ -15,7 +15,6 @@ The idea of the GNPyWrapper.jl is to only use the core functionalities of the [G
 
 - Getting rid of:
 
-
     - the automatic initialization step of the provided *gnpy-transmission-example*
     
     - and thereby getting rid of json data format and merging process
@@ -29,18 +28,20 @@ The idea of the GNPyWrapper.jl is to only use the core functionalities of the [G
     
     - from which you can generate gnpy objects and vice versa
 
-        - ATTENTION: RIGHT NOW: no roadm and fused  possible (and raman fiber)
+        - Note: RamanFiber not supported (yet?)
 
         - ATTENTION: RIGHT NOW: only initialization of objects supported, not results (after propagating a signal through element)
 
-    - a half-automatic process from which you can generate element and path descriptions
+    - a automatic process from which you can generate element and path descriptions
 
-        - ATTENTION: RIGHT NOW: function for that not provided
+        - ATTENTION: RIGHT NOW: properties of attributes are in Python format 
+            
+            - ATTENTION: RIGHT NOW: full Julia conversion is missing
 
     - two examples
 
         1. "example_01.jl"
-        2. -not provided yet-
+        2. "example_02.jl"
 
 ### Advantages
 
@@ -49,7 +50,6 @@ The idea of the GNPyWrapper.jl is to only use the core functionalities of the [G
 - full control over gnpy elements
 
 - also, better "understanding" of what is going on in the core of GNPy
-
 
 
 
@@ -97,6 +97,16 @@ First example
 - From Julia run:
 
     > include("example_01.jl")
+
+Second example
+
+- Set up:
+
+    - you need to copy *cli_example_02* and paste it in the correct folder of GNPy (gnpy.core.tools) next to *cli_example*
+
+- From Julia run:
+
+    > include("example_02.jl")
 
 ## Additional information
 
