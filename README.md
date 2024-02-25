@@ -70,6 +70,8 @@ right now:
     1. CondaPkg
 
         > add CondaPkg
+        
+        > conda add python 
     
     2. PythonCall
         
