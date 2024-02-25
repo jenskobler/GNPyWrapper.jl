@@ -183,9 +183,11 @@ def transmission_main_example(equipment,network, power_db, no_insert_edfas, PRIN
     path = compute_constrained_path(network, req)
 
     spans = [s.params.length for s in path if isinstance(s, RamanFiber) or isinstance(s, Fiber)]
-    print(f'\nThere are {len(spans)} fiber spans over {sum(spans)/1000:.0f} km between {source.uid} '
+    if PRINT_ON_CONSOLE:
+        print(f'\nThere are {len(spans)} fiber spans over {sum(spans)/1000:.0f} km between {source.uid} '
           f'and {destination.uid}')
-    print(f'\nNow propagating between {source.uid} and {destination.uid}:')
+    if PRINT_ON_CONSOLE:
+        print(f'\nNow propagating between {source.uid} and {destination.uid}:')
 
     power_range = [0]
     if power_mode:
@@ -204,9 +206,11 @@ def transmission_main_example(equipment,network, power_db, no_insert_edfas, PRIN
         # whatever the equalization, -3 dB is applied on all channels (ie initial power in initial spectrum pre-empts
         # "--power" option)
         if power_mode:
-            print(f'\nPropagating with input power = {ansi_escapes.cyan}{lin2db(req.power*1e3):.2f} dBm{ansi_escapes.reset}:')
+            if PRINT_ON_CONSOLE:
+                print(f'\nPropagating with input power = {ansi_escapes.cyan}{lin2db(req.power*1e3):.2f} dBm{ansi_escapes.reset}:')
         else:
-            print(f'\nPropagating in {ansi_escapes.cyan}gain mode{ansi_escapes.reset}: power cannot be set manually')
+            if PRINT_ON_CONSOLE:
+                print(f'\nPropagating in {ansi_escapes.cyan}gain mode{ansi_escapes.reset}: power cannot be set manually')
         infos = propagate(path, req, equipment)
         if len(power_range) == 1:
             for elem in path:
@@ -297,9 +301,10 @@ def half_transmission_main_example(equipment,network, power_db, no_insert_edfas,
     path = compute_constrained_path(network, req)
 
     spans = [s.params.length for s in path if isinstance(s, RamanFiber) or isinstance(s, Fiber)]
-    print(f'\nThere are {len(spans)} fiber spans over {sum(spans)/1000:.0f} km between {source.uid} '
+    if PRINT_ON_CONSOLE:
+        print(f'\nThere are {len(spans)} fiber spans over {sum(spans)/1000:.0f} km between {source.uid} '
           f'and {destination.uid}')
-    print(f'\nNow propagating between {source.uid} and {destination.uid}:')
+        print(f'\nNow propagating between {source.uid} and {destination.uid}:')
 
     power_range = [0]
     if power_mode:
@@ -318,9 +323,11 @@ def half_transmission_main_example(equipment,network, power_db, no_insert_edfas,
         # whatever the equalization, -3 dB is applied on all channels (ie initial power in initial spectrum pre-empts
         # "--power" option)
         if power_mode:
-            print(f'\nPropagating with input power = {ansi_escapes.cyan}{lin2db(req.power*1e3):.2f} dBm{ansi_escapes.reset}:')
+            if PRINT_ON_CONSOLE:
+                print(f'\nPropagating with input power = {ansi_escapes.cyan}{lin2db(req.power*1e3):.2f} dBm{ansi_escapes.reset}:')
         else:
-            print(f'\nPropagating in {ansi_escapes.cyan}gain mode{ansi_escapes.reset}: power cannot be set manually')
+            if PRINT_ON_CONSOLE:
+                print(f'\nPropagating in {ansi_escapes.cyan}gain mode{ansi_escapes.reset}: power cannot be set manually')
         
 
         # Create list for further analysing the path in julia (it includes a dictionary the type and the specific object itself)
