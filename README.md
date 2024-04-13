@@ -81,7 +81,8 @@ First example
 
 - Set up:
 
-    - you need to copy *cli_example_02* and paste it in the correct folder of GNPy (gnpy.core.tools) next to *cli_example*
+    - you need to copy *cli_example_02.py* and paste it in the correct folder of GNPy (gnpy.core.tools) next to *cli_example*
+        - the *cli_example_02.py* can be found in GNPyWrapper.jl\test\gnpy_transmission_example_script 
         - the folder is located in the \GNPyWrapper.jl\.CondaPkg\env\Lib\site-packages\gnpy\tools
 
 - From Julia in the GNPyWrapper.jl\test folder run:
@@ -92,8 +93,9 @@ Second example
 
 - Set up:
 
-    - you need to copy *cli_example_02* and paste it in the correct folder of GNPy (gnpy.core.tools) next to *cli_example*
-        - the folder is located in the \GNPyWrapper.jl\.CondaPkg\env\Lib\site-packages\gnpy\tools   
+    - you need to copy *cli_example_02.py* and paste it in the correct folder of GNPy (gnpy.core.tools) next to *cli_example*
+        - the *cli_example_02.py* can be found in GNPyWrapper.jl\test\gnpy_transmission_example_script 
+        - the folder is located in the \GNPyWrapper.jl\.CondaPkg\env\Lib\site-packages\gnpy\tools
 
 - From Julia in GNPyWrapper.jl\test folder run:
 
