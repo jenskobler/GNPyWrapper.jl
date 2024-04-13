@@ -57,21 +57,21 @@ right now:
 1. git clone this repo
 2. run julia
 3. activate the GNPyWrapper.jl
-4. install julia specifc packages 
+4. activate/install julia specifc packages 
 
     1. CondaPkg
 
-        > add CondaPkg
+        > using CondaPkg
         
-        > conda add python 
+        > ]conda add python 
     
     2. PythonCall
         
-        > add PythonCall
+        > using PythonCall
 
 5. install GNPy from pip
 
-    > conda pip_add gnpy
+    > ]conda pip_add gnpy==2.8.0
 
 
 
@@ -84,7 +84,7 @@ First example
     - you need to copy *cli_example_02* and paste it in the correct folder of GNPy (gnpy.core.tools) next to *cli_example*
         - the folder is located in the \GNPyWrapper.jl\.CondaPkg\env\Lib\site-packages\gnpy\tools
 
-- From Julia run:
+- From Julia in the GNPyWrapper.jl\test folder run:
 
     > include("example_01.jl")
 
@@ -95,6 +95,6 @@ Second example
     - you need to copy *cli_example_02* and paste it in the correct folder of GNPy (gnpy.core.tools) next to *cli_example*
         - the folder is located in the \GNPyWrapper.jl\.CondaPkg\env\Lib\site-packages\gnpy\tools   
 
-- From Julia run:
+- From Julia in GNPyWrapper.jl\test folder run:
 
     > include("example_02.jl")
