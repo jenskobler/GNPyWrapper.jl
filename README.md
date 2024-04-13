@@ -7,7 +7,7 @@
 
 The goal of the GNPyWrapper.jl is to increase the programmabilty of the already existing [GNPy Package](https://gnpy.readthedocs.io/en/master/) ([github page](https://github.com/Telecominfraproject/oopt-gnpy), [pip page](https://pypi.org/project/gnpy/)).
 
-It is mainly written in [Julia](https://julialang.org/) because this language has some advantages. For example speed.
+It is mainly written in [Julia](https://julialang.org/) because this language has some advantages. For example code execution speed.
 
 The work was inspired by the *gnpy-transmission-example* provided by the developers of GNPy.
 
@@ -28,15 +28,7 @@ The idea of the GNPyWrapper.jl is to only use the core functionalities of the [G
     
     - from which you can generate gnpy objects and vice versa
 
-        - Note: RamanFiber not supported (yet?)
-
-        - ATTENTION: RIGHT NOW: only initialization of objects supported, not results (after propagating a signal through element)
-
     - a automatic process from which you can generate element and path descriptions
-
-        - ATTENTION: RIGHT NOW: properties of attributes are in Python format 
-            
-            - ATTENTION: RIGHT NOW: full Julia conversion is missing
 
     - two examples
 
@@ -83,9 +75,6 @@ right now:
 
 
 
-
-
-
 ## Examples
 
 First example
@@ -93,6 +82,7 @@ First example
 - Set up:
 
     - you need to copy *cli_example_02* and paste it in the correct folder of GNPy (gnpy.core.tools) next to *cli_example*
+        - the folder is located in the \GNPyWrapper.jl\.CondaPkg\env\Lib\site-packages\gnpy\tools
 
 - From Julia run:
 
@@ -103,16 +93,8 @@ Second example
 - Set up:
 
     - you need to copy *cli_example_02* and paste it in the correct folder of GNPy (gnpy.core.tools) next to *cli_example*
+        - the folder is located in the \GNPyWrapper.jl\.CondaPkg\env\Lib\site-packages\gnpy\tools   
 
 - From Julia run:
 
     > include("example_02.jl")
-
-## Additional information
-
-Since the GNPyWrapper.jl was developed in two stages:
-
-1. Testing the Wrapper ideas with a GNPyWrapper written in Python (Proof of Concept)
-2. Implementing those ideas in the GNPyWrapper.jl in Julia
-
-maybe in the future there will also launch an usable GNPyWrapper written in Python.
