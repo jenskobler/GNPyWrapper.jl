@@ -58,7 +58,6 @@ export create_full_real_path
 # Write your package code here.
 
 
-include("a_initialize_phase/examplefile_03.jl")
 include("a_initialize_phase/create_description.jl")
 include("a_initialize_phase/create_object.jl")
 include("z_python_auxiliary_functions/analye_py_obj.jl")
