@@ -54,7 +54,7 @@ right now:
 
 ## Installation and Initialization of GNPyWrapper.jl
 
-1. git clone this repo from ...
+1. git clone this repo
 2. run julia
 3. activate the GNPyWrapper.jl
 4. install julia specifc packages 
